@@ -1,13 +1,13 @@
 {
-    "name": "meilisearch/meilisearch-laravel-scout",
+    "name": "areirei/meilisearch-laravel-scout",
     "description": "Laravel Scout custom engine for MeiliSearch",
     "keywords": ["meilisearch", "laravel", "scout", "search"],
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Jordan Massart",
-            "email": "hello@jordan-massart.be"
+            "name": "areirei",
+            "email": "reireia@protonmail.com"
         }
     ],
     "scripts": {
