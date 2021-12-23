@@ -57,7 +57,7 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
             'name' => $indexUid,
             'attributes'=>$attributes
         ])
-            ->expectsOutput('Index "'.$indexUid.'" have been displayed.')
+            ->expectsOutput('Index "'.$indexUid.'" have been displayed settings.')
             ->assertExitCode(0)
             ->run();
         //reset
@@ -176,19 +176,6 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
             '--reset' => true
         ])
             ->expectsOutput('Sortable settings of the"'.$indexUid.'" deleted.')
-            ->assertExitCode(0)
-            ->run();
-    }
-    /** @test */
-    public function synonymCanBeCreatedAndDeleted()
-    {
-        $indexUid = $this->getPrefixedIndexUid('testindex');
-        //reset
-        $this->artisan('scout:synonym', [
-            'name' => $indexUid,
-            '--reset' => true
-        ])
-            ->expectsOutput('Synonyms settings of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)
             ->run();
     }
