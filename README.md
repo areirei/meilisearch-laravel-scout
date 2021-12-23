@@ -14,9 +14,9 @@
 </h4>
 
 <p align="center">
-  <a href="https://packagist.org/packages/meilisearch/meilisearch-laravel-scout"><img src="https://img.shields.io/packagist/v/meilisearch/meilisearch-laravel-scout" alt="Latest Stable Version"></a>
-  <a href="https://github.com/meilisearch/meilisearch-laravel-scout/actions"><img src="https://github.com/meilisearch/meilisearch-laravel-scout/workflows/Tests/badge.svg" alt="Actions Status"></a>
-  <a href="https://github.com/meilisearch/meilisearch-laravel-scout/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License"></a>
+  <a href="https://packagist.org/packages/areirei/meilisearch-laravel-scout"><img src="https://img.shields.io/packagist/v/areirei/meilisearch-laravel-scout" alt="Latest Stable Version"></a>
+  <a href="https://github.com/areirei/meilisearch-laravel-scout/actions"><img src="https://github.com/areirei/meilisearch-laravel-scout/workflows/Tests/badge.svg" alt="Actions Status"></a>
+  <a href="https://github.com/areirei/meilisearch-laravel-scout/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License"></a>
   <a href="https://app.bors.tech/repositories/29019"><img src="https://bors.tech/images/badge_small.svg" alt="Bors enabled"></a>
 </p>
 
@@ -39,6 +39,13 @@
 - [🚀 Getting Started](#-getting-started)
   - [Indexes](#indexes)
   - [Search](#search)
+- [🗃️ Setting](#-setting)
+  - [Displayed](#displayed)
+  - [Distinct](#distinct)
+  - [Filterable](#filterable)
+  - [Ranking](#ranking)
+  - [Searchable](#searchable)
+  - [Sortable](#sortable)
 - [🤖 Compatibility with MeiliSearch](#-compatibility-with-meilisearch)
 - [💡 Learn More](#-learn-more)
 - [Development Workflow and Contributing](#development-workflow-and-contributing)
@@ -47,14 +54,14 @@
 
 See our [Documentation](https://docs.meilisearch.com/learn/tutorials/getting_started.html) or our [API References](https://docs.meilisearch.com/reference/api/).
 
-Also, take a look at the [Wiki](https://github.com/meilisearch/meilisearch-laravel-scout/wiki) of this repository!
+Also, take a look at the [Wiki](https://github.com/areirei/meilisearch-laravel-scout/wiki) of this repository!
 
 ## 🔧 Installation
 
 ### Install the Plugin <!-- omit in toc -->
 
 ```bash
-composer require meilisearch/meilisearch-laravel-scout
+composer require areirei/meilisearch-laravel-scout
 ```
 
 ### Install the HTTP Client <!-- omit in toc -->
@@ -244,6 +251,85 @@ class BookController extends Controller
 }
 ```
 
+## 🗃️ Setting
+
+### Displayed
+
+#### Edit displayed settings
+
+```bash
+// Get displayed
+php artisan scout:display books
+// Edit displayed
+php artisan scout:display books book_id book_name
+// Reset displayed
+php artisan scout:display books --reset
+```
+
+### Distinct
+
+#### Edit distinct settings
+
+```bash
+// Get distinct
+php artisan scout:distinct books
+// Edit distinct
+php artisan scout:distinct books book_id
+// Reset distinct
+php artisan scout:distinct books --reset
+```
+
+### Filterable
+
+#### Edit filterable settings
+
+```bash
+// Get filterable
+php artisan scout:filter books
+// Edit filterable
+php artisan scout:filter books book_id book_name
+// Reset filterable
+php artisan scout:filter books --reset
+```
+
+### Ranking
+
+#### Edit ranking rules
+
+```bash
+// Get ranking
+php artisan scout:ranking books
+// Edit ranking
+php artisan scout:ranking books book_id book_name
+// Reset ranking
+php artisan scout:ranking books --reset
+```
+
+### Searchable
+
+#### Edit searchable
+
+```bash
+// Get searchable
+php artisan scout:search books
+// Edit searchable
+php artisan scout:search books book_id book_name
+// Reset searchable
+php artisan scout:search books --reset
+```
+
+### Sortable
+
+#### Edit sortable
+
+```bash
+// Get sortable
+php artisan scout:sort books
+// Edit sortable
+php artisan scout:sort books name
+// Reset sortable
+php artisan scout:sort books --reset
+```
 ## 🤖 Compatibility with MeiliSearch
 
 This package only guarantees the compatibility with the [version v0.20.0 of MeiliSearch](https://github.com/meilisearch/MeiliSearch/releases/tag/v0.20.0).
@@ -255,7 +341,7 @@ If you're not familiar with MeiliSerach yet, the following sections may interest
 - **Manipulate documents**: see the [API references](https://docs.meilisearch.com/reference/api/documents.html) or read more about [documents](https://docs.meilisearch.com/learn/core_concepts/documents.html).
 - **Search**: see the [API references](https://docs.meilisearch.com/reference/api/search.html) or follow our guide on [search parameters](https://docs.meilisearch.com/reference/features/search_parameters.html).
 - **Manage the indexes**: see the [API references](https://docs.meilisearch.com/reference/api/indexes.html) or read more about [indexes](https://docs.meilisearch.com/learn/core_concepts/indexes.html).
-- **Configure the index settings**: see the [API references](https://docs.meilisearch.com/reference/api/settings.html) or follow our guide on [settings parameters](https://docs.meilisearch.com/reference/features/settings.html). Also, the [Wiki](https://github.com/meilisearch/meilisearch-laravel-scout/wiki) of this repository will guide you through the configuration!
+- **Configure the index settings**: see the [API references](https://docs.meilisearch.com/reference/api/settings.html) or follow our guide on [settings parameters](https://docs.meilisearch.com/reference/features/settings.html). Also, the [Wiki](https://github.com/areirei/meilisearch-laravel-scout/wiki) of this repository will guide you through the configuration!
 
 💡 You can use more advance function by reading the documentation of [MeiliSearch PHP Client](https://github.com/meilisearch/meilisearch-php).
 
