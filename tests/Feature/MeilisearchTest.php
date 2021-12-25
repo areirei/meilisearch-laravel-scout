@@ -31,7 +31,7 @@ class MeilisearchTest extends FeatureTestCase
         $versionResponse = $engine->version();
         $this->assertIsArray($versionResponse);
         $this->assertArrayHasKey('commitSha', $versionResponse);
-        $this->assertArrayHasKey('buildDate', $versionResponse);
+        $this->assertArrayHasKey('commitDate', $versionResponse);
         $this->assertArrayHasKey('pkgVersion', $versionResponse);
     }
 
@@ -72,6 +72,7 @@ class MeilisearchTest extends FeatureTestCase
         $this->assertTrue('foo' === $searchResponse['hits'][0]['title']);
 
         $fooModel->update(['title' => 'lorem']);
+        $this->createSearchableModel('fo');
 
         $searchResponse = $this->waitForPendingUpdates($fooModel, function () {
             return SearchableModel::search('lorem')->raw();
