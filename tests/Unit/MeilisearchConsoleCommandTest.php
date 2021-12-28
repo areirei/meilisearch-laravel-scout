@@ -8,6 +8,7 @@ use MeiliSearch\Endpoints\Indexes;
 use MeiliSearch\Exceptions\ApiException;
 use Meilisearch\Scout\Engines\MeilisearchEngine;
 use Meilisearch\Scout\Tests\TestCase;
+use Http\Discovery\Psr17FactoryDiscovery;
 use Mockery as m;
 
 class MeilisearchConsoleCommandTest extends TestCase
@@ -78,7 +79,11 @@ class MeilisearchConsoleCommandTest extends TestCase
     public function commandReturnsErrorStatusCodeOnException()
     {
         $client = $this->mock(Client::class);
-        $client->expects('createIndex')->andThrow(new ApiException(404, ['message' => 'Testmessage']));
+
+        $responseFactory = Psr17FactoryDiscovery::findResponseFactory();
+        $response = $responseFactory->createResponse(404);
+
+        $client->expects('createIndex')->andThrow(new ApiException($response, ['message' => 'Testmessage']));
 
         $engineManager = $this->mock(EngineManager::class);
         $engineManager->shouldReceive('engine')->with('meilisearch')->andReturn(new MeilisearchEngine($client));
