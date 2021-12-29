@@ -12,10 +12,10 @@
     ],
     "scripts": {
         "lint": [
-            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist --show-progress=estimating --dry-run --using-cache=yes"
+            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist --show-progress=dots --dry-run --using-cache=yes"
         ],
         "lint:fix": [
-            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist --diff --show-progress=estimating --using-cache=no"
+            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist --diff --show-progress=dots --using-cache=no"
         ],
         "test": [
             "./vendor/bin/phpunit --coverage-text --color"
@@ -31,7 +31,7 @@
         "orchestra/testbench": "^5.0|^6.0",
         "mockery/mockery": "^1.3",
         "phpunit/phpunit": "^8.5|^9.5",
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "guzzlehttp/guzzle": "^7.2"
     },
     "autoload": {
