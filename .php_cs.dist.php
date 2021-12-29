@@ -18,18 +18,18 @@ $finder = \PhpCsFixer\Finder::create()
 $rules = [
     '@Symfony' => true,
 ];
-$config = new PhpCsFixer\Config();
+$config = new \PhpCsFixer\Config();
 $config->setRules($rules)
     ->setFinder($finder);
 
 if (false !== getenv('FABBOT_IO')) {
     try {
-        PhpCsFixer\FixerFactory::create()
+        \PhpCsFixer\FixerFactory::create()
             ->registerBuiltInFixers()
             ->registerCustomFixers($config->getCustomFixers())
-            ->useRuleSet(new PhpCsFixer\RuleSet($config->getRules()))
+            ->useRuleSet(new \PhpCsFixer\RuleSet($config->getRules()))
         ;
-    } catch (PhpCsFixer\ConfigurationException\InvalidConfigurationException $e) {
+    } catch (\PhpCsFixer\ConfigurationException\InvalidConfigurationException $e) {
         $config->setRules([]);
     } catch (UnexpectedValueException $e) {
         $config->setRules([]);
