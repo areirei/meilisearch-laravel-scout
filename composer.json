@@ -12,10 +12,10 @@
     ],
     "scripts": {
         "lint": [
-            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist.php --show-progress=dots --dry-run --using-cache=yes"
+            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist.php --dry-run --using-cache=yes"
         ],
         "lint:fix": [
-            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist.php --diff --show-progress=dots --using-cache=no"
+            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --verbose --config=./.php_cs.dist.php --diff --using-cache=no"
         ],
         "test": [
             "./vendor/bin/phpunit --coverage-text --color"
