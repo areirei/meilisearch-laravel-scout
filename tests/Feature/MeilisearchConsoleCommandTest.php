@@ -47,15 +47,16 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
             $this->assertTrue(true);
         }
     }
+
     /** @test */
     public function displayCanBeCreatedAndDeleted()
     {
         $indexUid = $this->getPrefixedIndexUid('testindex');
         //edit
-        $attributes=['name'];
+        $attributes = ['name'];
         $this->artisan('scout:display', [
             'name' => $indexUid,
-            'attributes'=>$attributes
+            'attributes' => $attributes,
         ])
             ->expectsOutput('Index "'.$indexUid.'" have been displayed settings.')
             ->assertExitCode(0)
@@ -63,21 +64,22 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
         //reset
         $this->artisan('scout:display', [
             'name' => $indexUid,
-            '--reset' => true
+            '--reset' => true,
         ])
             ->expectsOutput('Displayed settings of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)
             ->run();
     }
+
     /** @test */
     public function distinctCanBeCreatedAndDeleted()
     {
         $indexUid = $this->getPrefixedIndexUid('testindex');
         //edit
-        $attributes=['name'];
+        $attributes = ['name'];
         $this->artisan('scout:distinct', [
             'name' => $indexUid,
-            'attribute'=>$attributes[0]
+            'attribute' => $attributes[0],
         ])
             ->expectsOutput('Index "'.$indexUid.'" have been distinct settings.')
             ->assertExitCode(0)
@@ -85,21 +87,22 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
         //reset
         $this->artisan('scout:distinct', [
             'name' => $indexUid,
-            '--reset' => true
+            '--reset' => true,
         ])
             ->expectsOutput('Distinct settings of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)
             ->run();
     }
+
     /** @test */
     public function filterCanBeCreatedAndDeleted()
     {
         $indexUid = $this->getPrefixedIndexUid('testindex');
         //edit
-        $attributes=['name'];
+        $attributes = ['name'];
         $this->artisan('scout:filter', [
             'name' => $indexUid,
-            'attributes'=>$attributes
+            'attributes' => $attributes,
         ])
             ->expectsOutput('Index "'.$indexUid.'" have been filterable settings.')
             ->assertExitCode(0)
@@ -107,21 +110,22 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
         //reset
         $this->artisan('scout:filter', [
             'name' => $indexUid,
-            '--reset' => true
+            '--reset' => true,
         ])
             ->expectsOutput('Filterable settings of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)
             ->run();
     }
+
     /** @test */
     public function rankingCanBeCreatedAndDeleted()
     {
         $indexUid = $this->getPrefixedIndexUid('testindex');
         //edit
-        $attributes=['name'];
+        $attributes = ['name'];
         $this->artisan('scout:ranking', [
             'name' => $indexUid,
-            'attributes'=>$attributes
+            'attributes' => $attributes,
         ])
             ->expectsOutput('Index "'.$indexUid.'" have been ranking rules.')
             ->assertExitCode(0)
@@ -129,21 +133,22 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
         //reset
         $this->artisan('scout:ranking', [
             'name' => $indexUid,
-            '--reset' => true
+            '--reset' => true,
         ])
             ->expectsOutput('Ranking rules of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)
             ->run();
     }
+
     /** @test */
     public function searchCanBeCreatedAndDeleted()
     {
         $indexUid = $this->getPrefixedIndexUid('testindex');
         //edit
-        $attributes=['name'];
+        $attributes = ['name'];
         $this->artisan('scout:search', [
             'name' => $indexUid,
-            'attributes'=>$attributes
+            'attributes' => $attributes,
         ])
             ->expectsOutput('Index "'.$indexUid.'" have been searchable settings.')
             ->assertExitCode(0)
@@ -151,21 +156,22 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
         //reset
         $this->artisan('scout:search', [
             'name' => $indexUid,
-            '--reset' => true
+            '--reset' => true,
         ])
             ->expectsOutput('Searchable settings of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)
             ->run();
     }
+
     /** @test */
     public function sortCanBeCreatedAndDeleted()
     {
         $indexUid = $this->getPrefixedIndexUid('testindex');
         //edit
-        $attributes=['name'];
+        $attributes = ['name'];
         $this->artisan('scout:sort', [
             'name' => $indexUid,
-            'attributes'=>$attributes
+            'attributes' => $attributes,
         ])
             ->expectsOutput('Index "'.$indexUid.'" have been Sortable settings.')
             ->assertExitCode(0)
@@ -173,7 +179,7 @@ class MeilisearchConsoleCommandTest extends FeatureTestCase
         //reset
         $this->artisan('scout:sort', [
             'name' => $indexUid,
-            '--reset' => true
+            '--reset' => true,
         ])
             ->expectsOutput('Sortable settings of the"'.$indexUid.'" deleted.')
             ->assertExitCode(0)

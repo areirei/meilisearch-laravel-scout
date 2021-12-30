@@ -36,24 +36,26 @@ class RankingMeilisearch extends Command
     {
         try {
             //delete
-            if($this->option('reset')){
+            if ($this->option('reset')) {
                 $client->index($this->argument('name'))
                     ->resetRankingRules();
                 $this->info('Ranking rules of the"'.$this->argument('name').'" deleted.');
-                return ;
+
+                return;
             }
             //edit
-            $attributes=$this->argument('attributes');
-            if(count($attributes)){
-                $result=$client->index($this->argument('name'))
+            $attributes = $this->argument('attributes');
+            if (count($attributes)) {
+                $result = $client->index($this->argument('name'))
                     ->updateRankingRules($this->argument('attributes'));
                 $this->info('Index "'.$this->argument('name').'" have been ranking rules.');
+
                 return;
             }
             //get
-            $result=$client->index($this->argument('name'))
+            $result = $client->index($this->argument('name'))
                 ->getRankingRules();
-            $result=json_encode($result);
+            $result = json_encode($result);
             $this->info('Ranking rules of "'.$this->argument('name').'" :'.$result);
         } catch (ApiException $exception) {
             $this->error($exception->getMessage());

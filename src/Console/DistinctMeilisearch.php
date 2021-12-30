@@ -36,24 +36,26 @@ class DistinctMeilisearch extends Command
     {
         try {
             //delete
-            if($this->option('reset')){
+            if ($this->option('reset')) {
                 $client->index($this->argument('name'))
                     ->resetDistinctAttribute();
                 $this->info('Distinct settings of the"'.$this->argument('name').'" deleted.');
-                return ;
+
+                return;
             }
             //edit
-            $attribute=$this->argument('attribute');
-            if($attribute){
-                $result=$client->index($this->argument('name'))
+            $attribute = $this->argument('attribute');
+            if ($attribute) {
+                $result = $client->index($this->argument('name'))
                     ->updateDistinctAttribute($this->argument('attribute'));
                 $this->info('Index "'.$this->argument('name').'" have been distinct settings.');
+
                 return;
             }
             //get
-            $result=$client->index($this->argument('name'))
+            $result = $client->index($this->argument('name'))
                 ->getDistinctAttribute();
-            $result=json_encode($result);
+            $result = json_encode($result);
             $this->info('Distinct settings of "'.$this->argument('name').'" :'.$result);
         } catch (ApiException $exception) {
             $this->error($exception->getMessage());

@@ -2,13 +2,13 @@
 
 namespace Meilisearch\Scout\Tests\Unit;
 
+use Http\Discovery\Psr17FactoryDiscovery;
 use Laravel\Scout\EngineManager;
 use MeiliSearch\Client;
 use MeiliSearch\Endpoints\Indexes;
 use MeiliSearch\Exceptions\ApiException;
 use Meilisearch\Scout\Engines\MeilisearchEngine;
 use Meilisearch\Scout\Tests\TestCase;
-use Http\Discovery\Psr17FactoryDiscovery;
 use Mockery as m;
 
 class MeilisearchConsoleCommandTest extends TestCase

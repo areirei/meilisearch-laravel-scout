@@ -36,24 +36,26 @@ class SortMeilisearch extends Command
     {
         try {
             //delete
-            if($this->option('reset')){
+            if ($this->option('reset')) {
                 $client->index($this->argument('name'))
                     ->resetSortableAttributes();
                 $this->info('Sortable settings of the"'.$this->argument('name').'" deleted.');
-                return ;
+
+                return;
             }
             //edit
-            $attributes=$this->argument('attributes');
-            if(count($attributes)){
-                $result=$client->index($this->argument('name'))
+            $attributes = $this->argument('attributes');
+            if (count($attributes)) {
+                $result = $client->index($this->argument('name'))
                     ->updateSortableAttributes($this->argument('attributes'));
                 $this->info('Index "'.$this->argument('name').'" have been Sortable settings.');
+
                 return;
             }
             //get
-            $result=$client->index($this->argument('name'))
+            $result = $client->index($this->argument('name'))
                 ->getSortableAttributes();
-            $result=json_encode($result);
+            $result = json_encode($result);
             $this->info('Sortable settings of "'.$this->argument('name').'" :'.$result);
         } catch (ApiException $exception) {
             $this->error($exception->getMessage());

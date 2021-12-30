@@ -36,24 +36,26 @@ class DisplayMeilisearch extends Command
     {
         try {
             //delete
-            if($this->option('reset')){
+            if ($this->option('reset')) {
                 $client->index($this->argument('name'))
                     ->resetDisplayedAttributes();
                 $this->info('Displayed settings of the"'.$this->argument('name').'" deleted.');
-                return ;
+
+                return;
             }
             //edit
-            $attributes=$this->argument('attributes');
-            if(count($attributes)){
-                $result=$client->index($this->argument('name'))
+            $attributes = $this->argument('attributes');
+            if (count($attributes)) {
+                $result = $client->index($this->argument('name'))
                     ->updateDisplayedAttributes($this->argument('attributes'));
                 $this->info('Index "'.$this->argument('name').'" have been displayed settings.');
+
                 return;
             }
             //get
-            $result=$client->index($this->argument('name'))
+            $result = $client->index($this->argument('name'))
                 ->getDisplayedAttributes();
-            $result=json_encode($result);
+            $result = json_encode($result);
             $this->info('Displayed settings of "'.$this->argument('name').'" :'.$result);
         } catch (ApiException $exception) {
             $this->error($exception->getMessage());

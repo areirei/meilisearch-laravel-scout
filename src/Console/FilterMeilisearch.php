@@ -36,24 +36,26 @@ class FilterMeilisearch extends Command
     {
         try {
             //delete
-            if($this->option('reset')){
+            if ($this->option('reset')) {
                 $client->index($this->argument('name'))
                     ->resetFilterableAttributes();
                 $this->info('Filterable settings of the"'.$this->argument('name').'" deleted.');
-                return ;
+
+                return;
             }
             //edit
-            $attributes=$this->argument('attributes');
-            if(count($attributes)){
-                $result=$client->index($this->argument('name'))
+            $attributes = $this->argument('attributes');
+            if (count($attributes)) {
+                $result = $client->index($this->argument('name'))
                     ->updateFilterableAttributes($this->argument('attributes'));
                 $this->info('Index "'.$this->argument('name').'" have been filterable settings.');
+
                 return;
             }
             //get
-            $result=$client->index($this->argument('name'))
+            $result = $client->index($this->argument('name'))
                 ->getFilterableAttributes();
-            $result=json_encode($result);
+            $result = json_encode($result);
             $this->info('Filterable settings of "'.$this->argument('name').'" :'.$result);
         } catch (ApiException $exception) {
             $this->error($exception->getMessage());

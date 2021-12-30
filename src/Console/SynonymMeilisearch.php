@@ -16,7 +16,7 @@ class SynonymMeilisearch extends Command
     protected $signature = 'scout:synonym
             {name : The name of the index}
             {--reset : Reset the list of synonyms of an index to its default value.}';
-            //{attributes?* : Without this parameter, the attributes will be got.}
+    //{attributes?* : Without this parameter, the attributes will be got.}
 
     /**
      * The console command description.
@@ -36,11 +36,12 @@ class SynonymMeilisearch extends Command
     {
         try {
             //delete
-            if($this->option('reset')){
+            if ($this->option('reset')) {
                 $client->index($this->argument('name'))
                     ->resetSynonyms();
                 $this->info('Synonyms settings of the"'.$this->argument('name').'" deleted.');
-                return ;
+
+                return;
             }
             //edit @todo the synonyms is Two-dimensional array
             // $attributes=$this->argument('attributes');
@@ -51,9 +52,9 @@ class SynonymMeilisearch extends Command
             //     return;
             // }
             //get
-            $result=$client->index($this->argument('name'))
+            $result = $client->index($this->argument('name'))
                 ->getSynonyms();
-            $result=json_encode($result);
+            $result = json_encode($result);
             $this->info('Synonyms settings of "'.$this->argument('name').'" :'.$result);
         } catch (ApiException $exception) {
             $this->error($exception->getMessage());
